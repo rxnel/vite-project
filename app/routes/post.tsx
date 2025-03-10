@@ -30,7 +30,7 @@ export async function clientAction({ params }: Route.ClientActionArgs) {
 }
 
 export default function Post({ loaderData }: Route.ComponentProps) {
-	const fetcher = useFetcher();
+	const fetcher = useFetcher<{ isDeleted: boolean }>();
 	const isDeleted = fetcher.data?.isDeleted;
 
 	return (
