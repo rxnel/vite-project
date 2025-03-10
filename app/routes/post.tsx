@@ -17,7 +17,7 @@ export async function clientLoader({ params }: Route.LoaderArgs) {
 	return { post };
 }
 
-export async function clientAction({ params }: Route.LoaderArgs) {
+export async function clientAction({ params }: Route.ClientActionArgs) {
 	try {
 		await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`, {
 			method: 'DELETE',
