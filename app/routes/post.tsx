@@ -21,7 +21,6 @@ export async function clientAction({ params }: Route.LoaderArgs) {
 		console.error(error);
 		return { isDeleted: false };
 	}
-
 	return { isDeleted: true };
 }
 
@@ -31,16 +30,14 @@ export default function Post({ loaderData }: Route.ComponentProps) {
 
 	return (
 		<div className='max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md'>
-			{isDeleted ? <PostDeleted /> : <PostContent post={loaderData.post} />}
-			<div className='mt-8 border-t pt-4'>
-				<fetcher.Form method='delete'>
-					<button
-						type='submit'
-						className='px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'>
-						Delete Post
-					</button>
-				</fetcher.Form>
-			</div>
+			{isDeleted ? (
+				<PostDeleted />
+			) : (
+				<PostContent
+					post={loaderData.post}
+					fetcher={fetcher}
+				/>
+			)}
 		</div>
 	);
 }
