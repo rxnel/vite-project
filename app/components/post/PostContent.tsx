@@ -1,4 +1,5 @@
 import type { FetcherWithComponents } from 'react-router';
+import { Form } from 'react-router';
 
 interface PostContentProps {
 	post: {
@@ -16,13 +17,26 @@ export function PostContent({ post, fetcher }: PostContentProps) {
 				<p className='text-gray-700 leading-relaxed'>{post.body}</p>
 			</div>
 			<div className='mt-8 border-t pt-4'>
-				<fetcher.Form method='delete'>
-					<button
-						type='submit'
-						className='px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors'>
-						Delete Post
-					</button>
-				</fetcher.Form>
+				<div
+					id='form-buttons'
+					className='flex gap-4 justify-start'>
+					<fetcher.Form method='delete'>
+						<button
+							type='submit'
+							className='px-6 py-2.5 bg-red-600 text-white font-medium rounded-lg shadow-sm hover:bg-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2'>
+							Delete Post
+						</button>
+					</fetcher.Form>
+					<Form
+						action='/'
+						method='get'>
+						<button
+							type='submit'
+							className='px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
+							Go to home
+						</button>
+					</Form>
+				</div>
 			</div>
 		</div>
 	);

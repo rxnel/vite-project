@@ -5,6 +5,11 @@ import { PostDeleted } from '../components/post/PostDeleted';
 
 export async function clientLoader({ params }: Route.LoaderArgs) {
 	const postId = Number(params.postId);
+
+	if (!postId || isNaN(postId)) {
+		throw new Error('Post ID is required');
+	}
+
 	const res = await fetch(
 		`https://jsonplaceholder.typicode.com/posts/${postId}`
 	);
