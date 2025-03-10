@@ -18,6 +18,7 @@ export function NavBar() {
 							<NavLink to='/'>Home</NavLink>
 							<NavLink to='/dashboard/user-settings'>User Settings</NavLink>
 							<NavLink to='/dashboard/user-stats'>User Stats</NavLink>
+							<NavLink to='/about'>About</NavLink>
 						</div>
 					</div>
 				</div>
