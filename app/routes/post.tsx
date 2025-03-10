@@ -1,5 +1,7 @@
 import { Form, redirect, useFetcher } from 'react-router';
 import type { Route } from './+types/post';
+import { PostContent } from '../components/post/PostContent';
+import { PostDeleted } from '../components/post/PostDeleted';
 
 export async function clientLoader({ params }: Route.LoaderArgs) {
 	const postId = Number(params.postId);
@@ -25,27 +27,11 @@ export async function clientAction({ params }: Route.LoaderArgs) {
 
 export default function Post({ loaderData }: Route.ComponentProps) {
 	const fetcher = useFetcher();
-
 	const isDeleted = fetcher.data?.isDeleted;
+
 	return (
 		<div className='max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md'>
-			{isDeleted ? (
-				<div>
-					<p className='text-gray-700 leading-relaxed'>
-						Post deleted successfully
-					</p>
-				</div>
-			) : (
-				<div className='space-y-4'>
-					<h1 className='text-3xl font-bold text-gray-900'>
-						{loaderData.post.title}
-					</h1>
-					<p className='text-gray-700 leading-relaxed'>
-						{loaderData.post.body}
-					</p>
-				</div>
-			)}
-
+			{isDeleted ? <PostDeleted /> : <PostContent post={loaderData.post} />}
 			<div className='mt-8 border-t pt-4'>
 				<fetcher.Form method='delete'>
 					<button
