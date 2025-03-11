@@ -5,8 +5,8 @@ export default [
 	route('auth', 'routes/auth.tsx'),
 
 	// Root and protected routes
-	index('routes/home.tsx'),
-	route('todo', 'routes/todo.tsx'),
+	index('routes/todo.tsx'),
+	route('post-search', 'routes/post-search.tsx'),
 	route('post/:postId', 'routes/post.tsx'),
 
 	// Nested Route Example with Dashboard

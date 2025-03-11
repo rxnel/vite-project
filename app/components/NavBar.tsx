@@ -21,7 +21,7 @@ export function NavBar() {
 							<NavLink to='/'>Home</NavLink>
 							<NavLink to='/dashboard/user-settings'>User Settings</NavLink>
 							<NavLink to='/dashboard/user-stats'>User Stats</NavLink>
-							<NavLink to='/todo'>Todo</NavLink>
+							<NavLink to='/post-search'>Post Search</NavLink>
 						</div>
 					</div>
 

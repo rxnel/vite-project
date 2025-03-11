@@ -3,12 +3,12 @@ import type { Route } from './+types/home';
 
 export function meta({}: Route.MetaArgs) {
 	return [
-		{ title: 'New React Router App' },
-		{ name: 'description', content: 'Welcome to React Router!' },
+		{ title: 'Post Search' },
+		{ name: 'description', content: 'Search for a post by id' },
 	];
 }
 
-export default function Home() {
+export default function PostSearch() {
 	const navigate = useNavigate();
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

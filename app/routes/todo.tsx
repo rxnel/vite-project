@@ -7,6 +7,13 @@ import { TodoItem } from '../components/todo/TodoItem';
 import { AddTodoForm } from '../components/todo/AddTodoForm';
 import type { Route } from './+types/todo';
 
+export function meta({}: Route.MetaArgs) {
+	return [
+		{ title: 'Todo List' },
+		{ name: 'description', content: 'Your personal todo-list.' },
+	];
+}
+
 export async function clientAction({ request }: Route.ActionArgs) {
 	const method = request.method.toLowerCase();
 
