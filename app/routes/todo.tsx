@@ -104,7 +104,7 @@ export default function Todo() {
 
 	return (
 		<div className='max-w-2xl mx-auto my-8 p-6 bg-white rounded-lg shadow-md'>
-			<Toaster position='top-right' />
+			<Toaster position='top-center' />
 			<h1 className='text-2xl font-bold mb-6'>Todo List</h1>
 			<AddTodoForm />
 			{todos.length === 0 ? (
