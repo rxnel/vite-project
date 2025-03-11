@@ -2,7 +2,7 @@ import { type RouteConfig, index, route } from '@react-router/dev/routes';
 
 export default [
 	index('routes/home.tsx'),
-	route('about', 'routes/about.tsx'),
+	route('todo', 'routes/todo.tsx'),
 	route('post/:postId', 'routes/post.tsx'),
 
 	// Nested Route Example with Dashboard

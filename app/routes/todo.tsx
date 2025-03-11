@@ -3,7 +3,7 @@ import supabase from '../utils/supabase';
 import type { Tables } from '../../database.types';
 import { TodoItem } from '../components/todo/TodoItem';
 
-function About() {
+function Todo() {
 	const [todos, setTodos] = useState<Tables<'Todos'>[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState<string | null>(null);
@@ -63,4 +63,4 @@ function About() {
 	);
 }
 
-export default About;
+export default Todo;
