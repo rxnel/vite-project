@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import type { Route } from './+types/home';
+import type { Route } from './+types/post-search';
 
 export function meta({}: Route.MetaArgs) {
 	return [
