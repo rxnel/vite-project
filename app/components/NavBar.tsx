@@ -1,6 +1,9 @@
 import { Link } from 'react-router';
+import { useAuth } from '../contexts/AuthContext';
 
 export function NavBar() {
+	const { user, signOut } = useAuth();
+
 	return (
 		<nav className='bg-white shadow-sm'>
 			<div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -21,6 +24,19 @@ export function NavBar() {
 							<NavLink to='/todo'>Todo</NavLink>
 						</div>
 					</div>
+
+					{user && (
+						<div className='flex items-center'>
+							<div className='hidden sm:flex sm:items-center'>
+								<span className='text-sm text-gray-500 mr-4'>{user.email}</span>
+							</div>
+							<button
+								onClick={() => signOut()}
+								className='inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'>
+								Sign out
+							</button>
+						</div>
+					)}
 				</div>
 			</div>
 		</nav>

@@ -5,11 +5,14 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
+	useLocation,
+	useNavigate,
 } from 'react-router';
-
+import { useEffect } from 'react';
 import type { Route } from './+types/root';
 import './app.css';
 import { NavBar } from './components/NavBar';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
 
 export const links: Route.LinksFunction = () => [
 	{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -45,12 +48,46 @@ export function Layout({ children }: { children: React.ReactNode }) {
 	);
 }
 
-export default function App() {
+function AppContent() {
+	const { user, loading } = useAuth();
+	const location = useLocation();
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		// Don't redirect if already on auth page or if still loading auth state
+		if (loading) return;
+
+		// Skip authentication check for the auth page
+		if (location.pathname === '/auth') return;
+
+		// If user is not authenticated, redirect to auth page
+		if (!user) {
+			navigate('/auth', { replace: true });
+		}
+	}, [user, loading, location.pathname, navigate]);
+
+	// Show loading spinner while checking authentication
+	if (loading && location.pathname !== '/auth') {
+		return (
+			<div className='flex items-center justify-center h-screen'>
+				<div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500'></div>
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<NavBar />
 			<Outlet />
 		</div>
+	);
+}
+
+export default function App() {
+	return (
+		<AuthProvider>
+			<AppContent />
+		</AuthProvider>
 	);
 }
 
