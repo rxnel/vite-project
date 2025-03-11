@@ -9,3 +9,5 @@
 .env.local
 .env.development
 .env.production
+
+.my-scripts
